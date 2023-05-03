@@ -1,13 +1,40 @@
 /* HEADER */
 header {
   height: 120px;
-  border-bottom: 1px solid lightgray;
-  border: 2px solid purple;
+  //   border-bottom: 1px solid lightgray;
+  //   border: 2px solid purple;
 
   .container {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+  }
+
+  .search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    > input {
+      all: unset;
+      background-color: #f5f6f7;
+      height: 39px;
+      width: 630px;
+    }
+  }
+  .buttons {
+    display: flex;
+    .blocLog {
+      margin-right: 40px;
+    }
+  }
+  .prefSearch {
+    display: flex;
+    align-items: center;
+
+    .trie {
+      display: flex;
+    }
   }
 }
