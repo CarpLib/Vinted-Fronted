@@ -1,0 +1,13 @@
+/* HEADER */
+header {
+  height: 120px;
+  border-bottom: 1px solid lightgray;
+  border: 2px solid purple;
+
+  .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
