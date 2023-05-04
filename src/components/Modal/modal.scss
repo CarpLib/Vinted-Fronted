@@ -1,0 +1,29 @@
+.modal-root {
+  //   color: red;
+  /* Pour que la modal prenne tout l'écran : */
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.modal {
+  background-color: white;
+  width: 700px;
+  height: 400px;
+  padding: 10px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.modal button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  font-size: 30px;
+}

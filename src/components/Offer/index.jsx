@@ -28,24 +28,27 @@ export default function index({ offer }) {
         />
         <div className="description">
           <span className="price">{offer.product_price} €</span>
-          {offer.product_details.map((details) => {
-            const keyBrand = uuid();
-            const keySize = uuid();
-            return (
-              <>
-                {details.TAILLE && (
-                  <span key={keySize} className="size">
-                    {details.TAILLE}
-                  </span>
-                )}
-                {details.MARQUE && (
-                  <span key={keyBrand} className="brand">
-                    {details.MARQUE}
-                  </span>
-                )}
-              </>
-            );
-          })}
+          {offer.product_details
+            .slice(0)
+            .reverse()
+            .map((details) => {
+              const keyBrand = uuid();
+              const keySize = uuid();
+              return (
+                <>
+                  {details.TAILLE && (
+                    <span key={keySize} className="size">
+                      {details.TAILLE}
+                    </span>
+                  )}
+                  {details.MARQUE && (
+                    <span key={keyBrand} className="brand">
+                      {details.MARQUE}
+                    </span>
+                  )}
+                </>
+              );
+            })}
         </div>
       </div>
     </Link>
