@@ -3,7 +3,7 @@ import "./signUp.scss";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export default function Index({ setVisible, setLogin, isLog, setIsLog }) {
+export default function Index({ setVisible, setLogin, setIsLog }) {
   const [errors, setErrors] = useState({
     username: false,
     email: false,
@@ -17,7 +17,6 @@ export default function Index({ setVisible, setLogin, isLog, setIsLog }) {
   });
 
   const handleChange = (event) => {
-    console.log(Boolean(user.newsletter));
     const userClone = { ...user };
     if (event.target.type === "checkbox") {
       userClone[event.target.name] = !user.newsletter;
