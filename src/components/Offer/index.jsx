@@ -1,9 +1,9 @@
 import "./offer.scss";
-import { v4 as uuid } from "uuid";
 import { Link } from "react-router-dom";
+import { Fragment } from "react";
 
 export default function index({ offer }) {
-  console.log(offer);
+  // console.log(offer);
 
   return (
     <Link to={`/offer/${offer._id}`}>
@@ -31,22 +31,16 @@ export default function index({ offer }) {
           {offer.product_details
             .slice(0)
             .reverse()
-            .map((details) => {
-              const keyBrand = uuid();
-              const keySize = uuid();
+            .map((details, index) => {
               return (
-                <>
+                <Fragment key={index}>
                   {details.TAILLE && (
-                    <span key={keySize} className="size">
-                      {details.TAILLE}
-                    </span>
+                    <span className="size">{details.TAILLE}</span>
                   )}
                   {details.MARQUE && (
-                    <span key={keyBrand} className="brand">
-                      {details.MARQUE}
-                    </span>
+                    <span className="brand">{details.MARQUE}</span>
                   )}
-                </>
+                </Fragment>
               );
             })}
         </div>

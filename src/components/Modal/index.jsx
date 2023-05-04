@@ -1,8 +1,16 @@
 import "./modal.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SignUp from "../Signup";
+import Login from "../Login";
 
-export default function index({ setVisible, model }) {
-  console.log(model);
+export default function index({
+  setVisible,
+  visible,
+  login,
+  setLogin,
+  isLog,
+  setIsLog,
+}) {
   return (
     <div
       className="modal-root"
@@ -16,26 +24,34 @@ export default function index({ setVisible, model }) {
           event.stopPropagation();
         }}
       >
-        {/* button pour fermer la modal */}
         <button
+          className="btnClose"
           onClick={() => {
             setVisible(false);
           }}
         >
           <FontAwesomeIcon icon="fa-solid fa-circle-xmark" />
         </button>
-        <h1>{model.title}</h1>
-        <input
-          type={model.input1.type}
-          placeholder={model.input1.placeholder}
-        />
-        <input
-          type={model.input2.type}
-          placeholder={model.input2.placeholder}
-        />
-        {model.input3 && (
-          <input type={model.input3} placeholder={model.input3.placeholder} />
-        )}
+        <div className="contentModal">
+          {login ? (
+            <Login
+              login={login}
+              setLogin={setLogin}
+              setVisible={setVisible}
+              isLog={isLog}
+              setIsLog={setIsLog}
+            />
+          ) : (
+            <SignUp
+              login={login}
+              setLogin={setLogin}
+              visible={visible}
+              setVisible={setVisible}
+              isLog={isLog}
+              setIsLog={setIsLog}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

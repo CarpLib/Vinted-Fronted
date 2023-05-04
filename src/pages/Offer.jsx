@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Header from "../components/Header";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -48,7 +47,6 @@ export default function Offer() {
   // console.log(product);
   return (
     <>
-      <Header />
       {isLoading && (
         <section>
           <Carousel

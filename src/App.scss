@@ -5,6 +5,12 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+.App {
+  position: relative;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -31,6 +37,11 @@ button {
 
 .btn-2 {
   background-color: #007782;
+  color: white;
+}
+
+.btn-3 {
+  background-color: #c2175b;
   color: white;
 }
 

@@ -1,11 +1,15 @@
 import "./header.scss";
 import logo from "../../assets/logo.svg";
-import Modal from "../Modal";
-import { useState } from "react";
+import Cookies from "js-cookie";
 
-export default function Header() {
-  const [visible, setVisible] = useState(false);
-  const [modelModal, setModelModal] = useState({});
+export default function Header({
+  visible,
+  setVisible,
+  login,
+  setLogin,
+  isLog,
+  setIsLog,
+}) {
   return (
     <header>
       <div className="container">
@@ -23,38 +27,44 @@ export default function Header() {
           </div> */}
         </div>
         <div className="buttons">
-          <div className="blocLog">
-            <button
-              className="btn-1"
-              onClick={() => {
-                setVisible(!visible);
-                modelModal.title = "S'incrire";
-                modelModal.input1 = {
-                  type: "text",
-                  placeholder: "Nom d'utilisateur",
-                };
-                modelModal.input2 = { type: "email", placeholder: "Email" };
-                modelModal.input3 = {
-                  type: "password",
-                  placeholder: "Mot de passe",
-                };
-              }}
-            >
-              S'inscrire
-            </button>
-            <button
-              className="btn-1"
-              onClick={() => {
-                setVisible(!visible);
-              }}
-            >
-              Se connecter
-            </button>
-          </div>
+          {!isLog ? (
+            <div className="blocLog">
+              <button
+                className="btn-1"
+                onClick={() => {
+                  setLogin(false);
+                  setVisible(!visible);
+                }}
+              >
+                S'inscrire
+              </button>
+              <button
+                className="btn-1"
+                onClick={() => {
+                  setLogin(true);
+                  setVisible(!visible);
+                }}
+              >
+                Se connecter
+              </button>
+            </div>
+          ) : (
+            <div className="blocLog">
+              <button
+                className="btn-3"
+                onClick={() => {
+                  Cookies.remove("Vinted");
+                  setIsLog(false);
+                }}
+              >
+                Se Déconnecter
+              </button>
+            </div>
+          )}
+
           <button className="btn-2">Vends tes articles</button>
         </div>
       </div>
-      {visible && <Modal setVisible={setVisible} model={modelModal} />}
     </header>
   );
 }

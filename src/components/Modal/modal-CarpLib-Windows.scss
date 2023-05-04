@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
 
   .modal {
@@ -31,7 +31,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 10px;
+      margin: 10px 0;
       font-size: 30px;
     }
   }

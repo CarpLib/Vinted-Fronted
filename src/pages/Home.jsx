@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import Main from "../components/Main";
 import hero from "../assets/hero.jpg";
 import overlay from "../assets/overlay.svg";
@@ -18,6 +17,7 @@ export default function Home() {
         setData(response.data);
         setIsLoading(true);
       };
+
       fetchData();
     } catch (error) {
       console.log(error.message);
@@ -26,7 +26,6 @@ export default function Home() {
 
   return (
     <>
-      <Header />
       <div className="hero">
         <img className="background" src={hero} alt="" />
         <img className="overlay" src={overlay} alt="" />
