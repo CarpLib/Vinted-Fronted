@@ -1,8 +1,7 @@
 /* HEADER */
 header {
   height: 120px;
-  //   border-bottom: 1px solid lightgray;
-  //   border: 2px solid purple;
+  background-color: white;
 
   .container {
     height: 100%;
@@ -18,9 +17,12 @@ header {
 
     > input {
       all: unset;
-      background-color: #f5f6f7;
+      background-color: lightgray;
       height: 39px;
       width: 630px;
+      border-radius: 5px;
+      padding-left: 10px;
+      box-sizing: border-box;
     }
   }
   .buttons {
@@ -32,9 +34,28 @@ header {
   .prefSearch {
     display: flex;
     align-items: center;
+    margin-top: 15px;
 
     .trie {
       display: flex;
+      width: 170px;
+      align-items: center;
+      justify-content: space-between;
+      margin-right: 20px;
+
+      .rc-switch {
+        background-color: #007782;
+      }
+
+      .rc-switch-checked {
+        background-color: #007782;
+      }
+    }
+
+    .range {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
   }
 }

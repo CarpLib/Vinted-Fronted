@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -49,29 +49,40 @@ export default function Offer() {
     <>
       {isLoading && (
         <section>
-          <Carousel
-            responsive={responsive}
-            className="carousel"
-            infinite={true}
-          >
-            {product.product_pictures.map((picture) => {
-              console.log(picture);
+          <div className="blockOffer">
+            <Carousel
+              responsive={responsive}
+              className="carousel"
+              infinite={true}
+            >
+              {product.product_pictures.map((picture) => {
+                return (
+                  <img
+                    key={picture.asset_id}
+                    src={picture.url}
+                    alt="vetement"
+                  />
+                );
+              })}
+            </Carousel>
+            <div className="descriptionProduct">
+              <span className="price">{product.product_price} €</span>
 
-              return (
-                <img key={picture.asset_id} src={picture.url} alt="vetement" />
-              );
-            })}
-          </Carousel>
-          <div className="descriptionProduct">
-            <span className="price">{product.product_price} €</span>
-            <div>
-              <div>
-                {product.product_details.map((details) => {
-                  return <>{details.MARQUE && <span> MARQUE</span>}</>;
+              <div className="detailsArticle">
+                {product.product_details.map((details, index) => {
+                  const keyName = Object.keys(details);
+
+                  return (
+                    <div key={index} className="details">
+                      <span>{keyName} : </span>
+                      <span>{details[keyName]}</span>
+                    </div>
+                  );
                 })}
               </div>
+              <p className="articleName">{product.product_name} </p>
+              <p>{product.description}</p>
             </div>
-            <p>{product.product_name} </p>
           </div>
         </section>
       )}

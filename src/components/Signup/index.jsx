@@ -8,6 +8,7 @@ export default function Index({ setVisible, setLogin, setIsLog }) {
     username: false,
     email: false,
     password: false,
+    conflit: false,
   });
   const [user, setUser] = useState({
     username: "",
@@ -55,6 +56,10 @@ export default function Index({ setVisible, setLogin, setIsLog }) {
         setVisible(false);
       } catch (error) {
         console.log(error.message);
+        if (error.response.status === 409) {
+          errorsClone.conflit = true;
+          setErrors(errorsClone);
+        }
       }
     }
   };
@@ -75,7 +80,11 @@ export default function Index({ setVisible, setLogin, setIsLog }) {
           <p className="error">Merci de saisir votre nom d'utilisateur</p>
         )}
         <input
-          className={errors.email ? "inputSignUp inputError" : "inputSignUp"}
+          className={
+            errors.email || errors.conflit
+              ? "inputSignUp inputError"
+              : "inputSignUp"
+          }
           type="email"
           placeholder="Email"
           name="email"
@@ -111,6 +120,9 @@ export default function Index({ setVisible, setLogin, setIsLog }) {
             avoir au moins 18 ans.
           </p>
         </div>
+        {errors.conflit && (
+          <p className="error">Cette adresse mail a déjà été utilisé</p>
+        )}
         <button className="btn-2 signUp" type="submit">
           S'inscrire
         </button>

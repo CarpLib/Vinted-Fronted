@@ -1,31 +1,81 @@
 import "./header.scss";
 import logo from "../../assets/logo.svg";
 import Cookies from "js-cookie";
+import Switch from "rc-switch";
+import "rc-switch/assets/index.css";
+import { Link, useLocation } from "react-router-dom";
+import Range from "../Range";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Header({
   visible,
   setVisible,
-  login,
   setLogin,
   isLog,
   setIsLog,
+  range,
+  setRange,
+  search,
+  setSearch,
+  sort,
+  setSort,
 }) {
+  const location = useLocation();
+
+  const handleValuesChange = (values) => {
+    // console.log("Les valeurs sélectionnées sont :", values);
+    // Ici, vous pouvez utiliser les valeurs sélectionnées pour d'autres actions
+  };
+
   return (
     <header>
       <div className="container">
-        <img src={logo} alt="" />
+        <Link to="/">
+          <img src={logo} alt="" />
+        </Link>
         <div className="search">
-          <input type="text" placeholder="Rechercher des articles" />
-          {/* <div className="prefSearch">
-            <div className="trie">
-              <label>
-                <span>Trier les prix : </span>
-                <input type="checkbox" />
-              </label>
+          <input
+            type="text"
+            placeholder="Rechercher des articles"
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+            value={search}
+          />
+          {location.pathname === "/" && (
+            <div className="prefSearch">
+              <div className="trie">
+                <span>Trier par prix :</span>
+                <Switch
+                  checkedChildren={
+                    <FontAwesomeIcon icon="fa-solid fa-arrow-up" />
+                  }
+                  unCheckedChildren={
+                    <FontAwesomeIcon icon="fa-solid fa-arrow-down" />
+                  }
+                  onChange={(event) => {
+                    // console.log(event);
+                    if (event === true) {
+                      setSort("desc");
+                    } else {
+                      setSort("asc");
+                    }
+                  }}
+                />
+              </div>
+              <div className="range">
+                <span>Prix entre :</span>
+                <Range
+                  onValuesChange={handleValuesChange}
+                  range={range}
+                  setRange={setRange}
+                  className="Range"
+                />
+              </div>
             </div>
-            <div>Prix entre</div>
-          </div> */}
+          )}
         </div>
+
         <div className="buttons">
           {!isLog ? (
             <div className="blocLog">

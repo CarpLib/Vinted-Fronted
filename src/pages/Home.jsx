@@ -4,7 +4,7 @@ import overlay from "../assets/overlay.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function Home() {
+export default function Home({ range, search, sort }) {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState();
 
@@ -12,8 +12,9 @@ export default function Home() {
     try {
       const fetchData = async () => {
         const response = await axios(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${range[0]}&priceMax${range[1]}&sort=price-${sort}`
         );
+        console.log(response);
         setData(response.data);
         setIsLoading(true);
       };
@@ -22,7 +23,7 @@ export default function Home() {
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+  }, [search, range, sort]);
 
   return (
     <>
