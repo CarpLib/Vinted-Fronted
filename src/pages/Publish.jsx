@@ -86,86 +86,102 @@ export default function Publish() {
 
       <section className="center">
         <div className="line underline">
-          <p>Titre</p>
+          <label htmlFor="title">Titre</label>
           <input
             type="text"
+            id="title"
             placeholder="ex. Chemise Sézane verte"
             className="undeline"
             onChange={handleChange}
             name="title"
+            value={details.title}
           />
         </div>
         <div className="line">
-          <p>Décris ton article</p>
+          <label htmlFor="description">Décris ton article</label>
           <textarea
             name="description"
+            id="description"
             cols="30"
             rows="10"
             placeholder="ex. Porté quelques fois, taille correctement"
             onChange={handleChange}
+            value={details.description}
           ></textarea>
         </div>
       </section>
 
       <section className="center">
         <div className="line underline">
-          <p>Marque</p>
+          <label htmlFor="brand">Marque</label>
           <input
             type="text"
+            id="brand"
             placeholder="ex. Zara"
             name="brand"
             onChange={handleChange}
+            value={details.brand}
           />
         </div>
         <div className="line underline">
-          <p>Taille</p>
+          <label htmlFor="size">Taille</label>
           <input
             type="text"
             placeholder="ex. L /40 / 12"
             className="undeline"
             name="size"
             onChange={handleChange}
+            id="size"
+            value={details.size}
           />
         </div>
         <div className="line underline">
-          <p>Couleur</p>
+          <label htmlFor="color">Couleur</label>
           <input
+            id="color"
             type="text"
             placeholder="ex. Fushia"
             className="undeline"
             name="color"
             onChange={handleChange}
+            value={details.color}
           />
         </div>
         <div className="line underline">
-          <p>Etat</p>
+          <label htmlFor="condition">Etat</label>
           <input
+            id="condition"
             type="text"
             placeholder="Neuf avec étiquette"
             className="undeline"
             name="condition"
             onChange={handleChange}
+            value={details.condition}
           />
         </div>
         <div className="line">
-          <p>Lieu</p>
+          <label htmlFor="city">Lieu</label>
           <input
+            id="city"
             type="text"
             placeholder="ex. Paris"
             className="undeline"
             name="city"
             onChange={handleChange}
+            value={details.city}
           />
         </div>
       </section>
       <section className="center">
         <div className="line">
-          <p>Prix</p>
+          <label htmlFor="price">Prix</label>
           <input
-            type="text"
+            id="price"
+            type="number"
             placeholder="0.00€"
             name="price"
             onChange={handleChange}
+            value={details.price}
           />
         </div>
         <div className="check">
