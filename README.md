@@ -26,6 +26,10 @@ L'application affiche un carrousel pour permettre aux utilisateurs de voir toute
 
 L'application affiche une Dropzone pour permettre aux utilisateurs d'ajouter 6 images avec une prévisualisation et une icone pour supprimer une image selectionnée.
 
+## Mise en place du paiement en ligne avec Stripe
+
+Pour tester la fonction, Numero de carte : 4242 4242 4242 4242 Date : 04/24 CVC : 242 Code Post : 42424
+
 ## Prérequis
 
 - Node.js et yarn doivent être installés sur votre machine.

@@ -21,12 +21,14 @@ export default function Index({
   const title = article.title;
   const amount = article.price * 100;
   console.log(idUser);
+  console.log(title);
+  console.log(amount);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const cardElement = elements.getElement(CardElement);
     const stripeResponse = await stripe.createToken(cardElement, {
-      name: { idUser },
+      name: idUser,
     });
     console.log(stripeResponse);
     const stripeToken = stripeResponse.token.id;
@@ -35,8 +37,8 @@ export default function Index({
       "https://lereacteur-vinted-api.herokuapp.com/payment",
       {
         token: stripeToken,
-        title: { title },
-        amount: { amount },
+        title: title,
+        amount: amount,
       }
     );
     console.log(response.data);
