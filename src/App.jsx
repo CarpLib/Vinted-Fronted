@@ -5,6 +5,7 @@ import {
   faCircleXmark,
   faArrowUp,
   faArrowDown,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import Modal from "./components/Modal";
 
@@ -14,7 +15,7 @@ import Offer from "./pages/Offer";
 import Publish from "./pages/Publish";
 import Header from "./components/Header";
 import { useState } from "react";
-library.add(faCircleXmark, faArrowUp, faArrowDown);
+library.add(faCircleXmark, faArrowUp, faArrowDown, faPlus);
 
 function App() {
   const [islog, setIsLog] = useState(true);
@@ -24,7 +25,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("asc");
   return (
-    <div className={visible && "App"}>
+    <div className={visible ? "App" : ""}>
       <Router>
         <Header
           visible={visible}

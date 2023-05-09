@@ -3,7 +3,7 @@ import logo from "../../assets/logo.svg";
 import Cookies from "js-cookie";
 import Switch from "rc-switch";
 import "rc-switch/assets/index.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Range from "../Range";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -21,10 +21,16 @@ export default function Header({
   setSort,
 }) {
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleValuesChange = (values) => {
-    // console.log("Les valeurs sélectionnées sont :", values);
-    // Ici, vous pouvez utiliser les valeurs sélectionnées pour d'autres actions
+  const handlePublish = () => {
+    if (isLog) {
+      navigate("offer/publish");
+    } else {
+      navigate("/");
+      setLogin(true);
+      setVisible(!visible);
+    }
   };
 
   return (
@@ -66,7 +72,7 @@ export default function Header({
               <div className="range">
                 <span>Prix entre :</span>
                 <Range
-                  onValuesChange={handleValuesChange}
+                  // onValuesChange={handleValuesChange}
                   range={range}
                   setRange={setRange}
                   className="Range"
@@ -112,7 +118,14 @@ export default function Header({
             </div>
           )}
 
-          <button className="btn-2">Vends tes articles</button>
+          <button
+            className="btn-2"
+            onClick={() => {
+              handlePublish();
+            }}
+          >
+            Vends tes articles
+          </button>
         </div>
       </div>
     </header>

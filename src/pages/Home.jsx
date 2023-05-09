@@ -12,7 +12,7 @@ export default function Home({ range, search, sort }) {
     try {
       const fetchData = async () => {
         const response = await axios(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${range[0]}&priceMax${range[1]}&sort=price-${sort}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${range[0]}&priceMax=${range[1]}&sort=price-${sort}`
         );
         console.log(response);
         setData(response.data);
