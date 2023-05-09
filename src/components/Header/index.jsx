@@ -23,6 +23,10 @@ export default function Header({
   const location = useLocation();
   const navigate = useNavigate();
 
+  const handleValuesChange = (event) => {
+    // console.log(range);
+  };
+
   const handlePublish = () => {
     if (isLog) {
       navigate("offer/publish");
@@ -72,7 +76,7 @@ export default function Header({
               <div className="range">
                 <span>Prix entre :</span>
                 <Range
-                  // onValuesChange={handleValuesChange}
+                  onValuesChange={handleValuesChange}
                   range={range}
                   setRange={setRange}
                   className="Range"

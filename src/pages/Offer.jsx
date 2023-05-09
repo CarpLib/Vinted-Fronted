@@ -15,6 +15,7 @@ export default function Offer() {
         const response = await axios(
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
+        // console.log(response.data);
         setProduct(response.data);
         setIsLoading(true);
       };
@@ -81,7 +82,14 @@ export default function Offer() {
                 })}
               </div>
               <p className="articleName">{product.product_name} </p>
-              <p>{product.description}</p>
+              <p className="description">{product.product_description}</p>
+              <div className="avatar">
+                <img src={product.owner.account.avatar.secure_url} alt="" />
+                <p>{product.owner.account.username}</p>
+              </div>
+              <div className="buy">
+                <button onClick={() => {}}>Acheter</button>
+              </div>
             </div>
           </div>
         </section>

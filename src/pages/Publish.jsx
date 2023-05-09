@@ -14,11 +14,11 @@ export default function Publish() {
     color: "",
     condition: "",
     city: "",
-    price: "",
+    price: 0,
     exchange: false,
   });
 
-  console.log(pictures);
+  console.log(pictures[0]);
   const token = Cookies.get("Vinted");
 
   const handleChange = (event) => {
@@ -44,7 +44,8 @@ export default function Publish() {
       formData.append("city", details.city);
       formData.append("price", details.price);
       formData.append("exchange", details.exchange);
-      formData.append("picture", pictures);
+      formData.append("picture", pictures[0]);
+      formData.append("product_pictures", pictures);
 
       // // Parcourir le tableau des images et les ajouter à formData
       // pictures.forEach((picture, index) => {
