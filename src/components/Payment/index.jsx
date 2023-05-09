@@ -5,18 +5,28 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function Index({ setPaymentModal, paymentModal }) {
+export default function Index({
+  setPaymentModal,
+  paymentModal,
+  article,
+  setArticle,
+}) {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
 
   const [completed, setCompleted] = useState(false);
 
+  const idUser = article.idUser;
+  const title = article.title;
+  const amount = article.price * 100;
+  console.log(idUser);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const cardElement = elements.getElement(CardElement);
     const stripeResponse = await stripe.createToken(cardElement, {
-      name: "L'id de l'acheteur",
+      name: { idUser },
     });
     console.log(stripeResponse);
     const stripeToken = stripeResponse.token.id;
@@ -25,8 +35,8 @@ export default function Index({ setPaymentModal, paymentModal }) {
       "https://lereacteur-vinted-api.herokuapp.com/payment",
       {
         token: stripeToken,
-        title: "Le titre de l'annonce",
-        amount: 1000,
+        title: { title },
+        amount: { amount },
       }
     );
     console.log(response.data);

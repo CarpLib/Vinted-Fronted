@@ -20,7 +20,7 @@ export default function Publish() {
   });
 
   const navigate = useNavigate();
-  console.log(pictures[0]);
+  // console.log(pictures[0]);
   const token = Cookies.get("Vinted");
 
   const handleChange = (event) => {
@@ -55,10 +55,10 @@ export default function Publish() {
       }
 
       // Vérifier le contenu du formData
-      console.log("FormData content:");
-      for (const [key, value] of formData.entries()) {
-        console.log(`${key}:`, value);
-      }
+      // console.log("FormData content:");
+      // for (const [key, value] of formData.entries()) {
+      //   console.log(`${key}:`, value);
+      // }
 
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",

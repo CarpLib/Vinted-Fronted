@@ -10,6 +10,8 @@ export default function Offer({
   isLog,
   setVisible,
   visible,
+  article,
+  setArticle,
 }) {
   const { id } = useParams();
   const [product, setProduct] = useState();
@@ -101,6 +103,12 @@ export default function Offer({
               <div className="buy">
                 <button
                   onClick={() => {
+                    const articleClone = { ...article };
+                    console.log(product.owner._id);
+                    articleClone.idUser = product.owner._id;
+                    articleClone.title = product.product_name;
+                    articleClone.price = product.product_price;
+                    setArticle(articleClone);
                     isLog
                       ? setPaymentModal(!paymentModal)
                       : setVisible(!visible);

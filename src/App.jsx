@@ -28,6 +28,7 @@ function App() {
   const [range, setRange] = useState([10, 100]);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("asc");
+  const [article, setArticle] = useState({});
 
   const stripePromise = loadStripe(
     "pk_test_51HCObyDVswqktOkX6VVcoA7V2sjOJCUB4FBt3EOiAdSz5vWudpWxwcSY8z2feWXBq6lwMgAb5IVZZ1p84ntLq03H00LDVc2RwP"
@@ -71,6 +72,8 @@ function App() {
                 isLog={islog}
                 setVisible={setVisible}
                 visible={visible}
+                article={article}
+                setArticle={setArticle}
               />
             }
           />
@@ -91,6 +94,8 @@ function App() {
             <Payment
               setPaymentModal={setPaymentModal}
               paymentModal={paymentModal}
+              article={article}
+              setArticle={setArticle}
             />
           </Elements>
         )}
