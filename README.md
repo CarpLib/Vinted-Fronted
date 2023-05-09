@@ -22,6 +22,10 @@ Les utilisateurs peuvent définir un prix minimum et un prix maximum à l'aide d
 
 L'application affiche un carrousel pour permettre aux utilisateurs de voir toutes les images de l'article.
 
+## Affichage d'une dropzone pour uploader maximum 6 images
+
+L'application affiche une Dropzone pour permettre aux utilisateurs d'ajouter 6 images avec une prévisualisation et une icone pour supprimer une image selectionnée.
+
 ## Prérequis
 
 - Node.js et yarn doivent être installés sur votre machine.
