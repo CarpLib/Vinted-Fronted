@@ -4,6 +4,52 @@
     margin-bottom: 30px;
   }
 
+  .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .customFileInputContainer {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+
+      .customFileInput {
+        display: none;
+      }
+
+      .customFileButton {
+        background-color: #007782;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 12px 24px;
+        border-radius: 4px;
+      }
+      .pictureBlock {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 45%;
+        .fileName {
+          margin-left: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .avatarPicture {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+  }
+
   form {
     display: flex;
     flex-direction: column;

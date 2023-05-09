@@ -3,6 +3,7 @@ import DropZone from "../components/Dropzone";
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 export default function Publish() {
   const [pictures, setPictures] = useState([]);
@@ -18,6 +19,7 @@ export default function Publish() {
     exchange: false,
   });
 
+  const navigate = useNavigate();
   console.log(pictures[0]);
   const token = Cookies.get("Vinted");
 
@@ -44,13 +46,13 @@ export default function Publish() {
       formData.append("city", details.city);
       formData.append("price", details.price);
       formData.append("exchange", details.exchange);
-      formData.append("picture", pictures[0]);
-      formData.append("product_pictures", pictures);
+      // formData.append("picture", pictures[0]);
+      // formData.append("product_pictures", pictures);
 
       // // Parcourir le tableau des images et les ajouter à formData
-      // pictures.forEach((picture, index) => {
-      //   formData.append(`pictures[${index}]`, picture);
-      // });
+      for (let i = 0; i < pictures.length; i++) {
+        formData.append("picture", pictures[i]);
+      }
 
       // Vérifier le contenu du formData
       console.log("FormData content:");
@@ -68,6 +70,7 @@ export default function Publish() {
           },
         }
       );
+      navigate("/");
       console.log(response.data);
     } catch (error) {
       console.log(error);

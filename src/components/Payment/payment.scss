@@ -1,4 +1,4 @@
-.modal-root {
+.payment-root {
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -22,10 +22,46 @@
     border-radius: 25px;
 
     .contentModal {
-      width: 100%;
+      width: 80%;
       height: 100%;
-      display: flex;
-      justify-content: center;
+      margin: 0 auto;
+
+      .done {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        span {
+          font-size: 40px;
+        }
+      }
+
+      .formPay {
+        padding: 0 20px;
+      }
+
+      h1 {
+        font-size: 20px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #007782;
+      }
+      p {
+        font-size: 12px;
+        text-align: center;
+        text-decoration: underline;
+        margin-bottom: 50px;
+      }
+      .buy {
+        width: 70%;
+        margin: 50px auto;
+        text-align: center;
+        background-color: #007782;
+        color: white;
+      }
     }
 
     .btnClose {

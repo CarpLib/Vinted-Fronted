@@ -4,10 +4,18 @@ import { useParams } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-export default function Offer() {
+export default function Offer({
+  paymentModal,
+  setPaymentModal,
+  isLog,
+  setVisible,
+  visible,
+}) {
   const { id } = useParams();
   const [product, setProduct] = useState();
   const [isLoading, setIsLoading] = useState(false);
+
+  // console.log(paymentModal);
 
   useEffect(() => {
     try {
@@ -84,11 +92,22 @@ export default function Offer() {
               <p className="articleName">{product.product_name} </p>
               <p className="description">{product.product_description}</p>
               <div className="avatar">
-                <img src={product.owner.account.avatar.secure_url} alt="" />
+                {product.owner.account.avatar && (
+                  <img src={product.owner.account.avatar.secure_url} alt="" />
+                )}
+
                 <p>{product.owner.account.username}</p>
               </div>
               <div className="buy">
-                <button onClick={() => {}}>Acheter</button>
+                <button
+                  onClick={() => {
+                    isLog
+                      ? setPaymentModal(!paymentModal)
+                      : setVisible(!visible);
+                  }}
+                >
+                  Acheter
+                </button>
               </div>
             </div>
           </div>

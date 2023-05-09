@@ -36,7 +36,7 @@ export default function Index({ setLogin, setVisible, setIsLog }) {
           "https://lereacteur-vinted-api.herokuapp.com/user/login",
           user
         );
-        console.log(response.data.token);
+        console.log(response.data);
         const token = Cookies.get("Vinted");
         if (token) {
           Cookies.remove("Vinted");

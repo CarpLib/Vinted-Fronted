@@ -14,17 +14,24 @@ export default function Index({ setVisible, setLogin, setIsLog }) {
     username: "",
     email: "",
     password: "",
+    avatar: "",
     newsletter: false,
   });
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleChange = (event) => {
+    // console.log(event);
     const userClone = { ...user };
     if (event.target.type === "checkbox") {
       userClone[event.target.name] = !user.newsletter;
+    } else if (event.target.type === "file") {
+      setSelectedFile(event.target.files[0].name);
+      userClone[event.target.name] = event.target.files[0];
     } else {
       userClone[event.target.name] = event.target.value;
     }
     setUser(userClone);
+    console.log(user.avatar);
   };
 
   const handleSubmit = async (event) => {
@@ -46,11 +53,16 @@ export default function Index({ setVisible, setLogin, setIsLog }) {
       return;
     } else {
       try {
+        const formData = new FormData();
+        formData.append("username", user.username);
+        formData.append("email", user.email);
+        formData.append("password", user.password);
+        formData.append("avatar", user.avatar);
         const response = await axios.post(
           "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-          user
+          formData
         );
-        console.log(response.data.token);
+        console.log(response.data);
         Cookies.set("Vinted", response.data.token, { expires: 7 });
         setIsLog(true);
         setVisible(false);
@@ -68,6 +80,33 @@ export default function Index({ setVisible, setLogin, setIsLog }) {
     <div className="signUp">
       <form onSubmit={handleSubmit}>
         <h1>S'inscrire</h1>
+        <div className="avatar">
+          <div className="customFileInputContainer">
+            <label htmlFor="avatar" className="customFileButton">
+              Choisir un fichier
+            </label>
+            <input
+              id="avatar"
+              type="file"
+              className="customFileInput"
+              name="avatar"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="pictureBlock">
+            {user.avatar && (
+              <img
+                className="avatarPicture"
+                src={URL.createObjectURL(user.avatar)}
+                alt="avatar de l'utilisateur"
+              />
+            )}
+
+            {selectedFile && <span className="fileName">{selectedFile}</span>}
+          </div>
+        </div>
+
         <input
           className={errors.username ? "inputSignUp inputError" : "inputSignUp"}
           type="text"
